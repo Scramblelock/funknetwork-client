@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import MyButton from '../../util/MyButton';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import MyButton from "../../util/MyButton";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 // Icons
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 // REdux
-import { connect } from 'react-redux';
-import { likeFunkPost, unlikeFunkPost } from '../../redux/actions/dataActions';
+import { connect } from "react-redux";
+import { likeFunkPost, unlikeFunkPost } from "../../redux/actions/dataActions";
 
 export class LikeButton extends Component {
   likedFunkPost = () => {
     if (
       this.props.user.likes &&
       this.props.user.likes.find(
-        (like) => like.funkPostId === this.props.funkPostId
+        like => like.funkPostId === this.props.funkPostId
       )
     )
       return true;
@@ -28,7 +28,7 @@ export class LikeButton extends Component {
   unlikeFunkPost = () => {
     this.props.unlikeFunkPost(this.props.funkPostId);
   };
-  
+
   render() {
     const { authenticated } = this.props.user;
     const likeButton = !authenticated ? (
@@ -57,7 +57,7 @@ LikeButton.propTypes = {
   unlikeFunkPost: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user
 });
 
